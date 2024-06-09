@@ -1,47 +1,43 @@
-import React from 'react';
-import ChatTitLe from '../components/ChatTitLe';
-import logo from "../images/artificial-intelligence.png";
+// BackOffice.js
+
+import React from "react";
+import { Link, Outlet } from "react-router-dom";
 
 const BackOffice = () => {
-  const chats = [
-    { id: 1, title: "Chat 1", messages: ["Message 1", "Message 2"] },
-    { id: 2, title: "Chat 2", messages: ["Message 3", "Message 4"] },
-    // Add more chat objects as needed
-  ];
-
   return (
-    <div className="bg-gray-100 min-h-screen">
-      {/* Header */}
-      <header className="py-6 px-8 bg-white shadow-md flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <img src={logo} alt="logo" className="w-10 h-10" />
-          <h1 className="text-3xl font-semibold text-blue-600">Chats</h1>
-        </div>
-      </header>
+    <div
 
-      {/* Main Content */}
-      <div className="container mx-auto py-8 px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {/* Chat Cards */}
-          {chats.map((chat) => (
-            <div key={chat.id} className="bg-white rounded-lg shadow-md overflow-hidden">
-              <div className="p-6">
-                <ChatTitLe title={chat.title} />
-                <div className="mt-4">
-                  {chat.messages.map((message, index) => (
-                    <div key={index} className="flex items-center mb-2">
-                      <span className="text-gray-600 font-semibold mr-2">Question:</span>
-                      <span>{message}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
+      className="flex flex-col "
+    >
+      <div className="flex h-full bg-blue-950 py-4">
+        <div className="flex gap-5 mx-auto w-4/5">
+          <div className="w-1/4 ">
+           <div className="rounded-xl p-4 bg-white/95">
+           <div className="p-4 rounded-xl bg-white   shadow-2xl">
+              <Link
+                className="flex justify-between items-center px-4 py-3 rounded-xl text-xl font-semibold text-blue-600 transition duration-300 ease-in-out hover:bg-blue-200"
+                to="chats"
+              >
+                Chats <span className="text-lg">5</span>
+              </Link>
+              <Link
+                className="flex justify-between items-center px-4 py-3 rounded-xl text-xl font-semibold text-blue-600 transition duration-300 ease-in-out hover:bg-blue-200"
+                to="Q_&_A"
+              >
+                Q & A <span className="text-lg">133</span>
+              </Link>
             </div>
-          ))}
+           </div>
+          </div>
+          <div className="w-3/4 ">
+            <div className="p-4 rounded-xl bg-white bg-opacity-95 shadow-lg">
+              <Outlet />
+            </div>
+          </div>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default BackOffice;
